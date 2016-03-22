@@ -1,0 +1,51 @@
+.form-container
+	%h1
+		Your Information
+	.input-container
+		.input-title
+			Full Name
+		%input{id: 'full-name'}
+	.input-container	
+		.input-title
+			Age
+		%input{id: 'age'}
+	.input-container
+		.input-title
+			Gender
+		%input{id: 'gender'}
+	.button{class: 'disabled'}
+		Next
+:javascript
+	$('input').keyup(function () {
+		var validInputs = 0;
+		var inputList = ['#full-name', '#age', '#gender'];
+		
+		for (i = 0; i < inputList.length; i++) {
+			if ($(inputList[i]).val() != '') {
+				validInputs += 1;
+			}
+		}
+
+		if (validInputs == 3) {
+			$('.button').removeClass('disabled');
+		} else if (!$('.button').hasClass('disabled')) {
+			$('.button').addClass('disabled');
+		}
+	});
+
+
+	$('.button').click(function() {
+		var userResponse = {}
+		userResponse['name'] =  $('#full-name').val();
+		userResponse['age'] =  $('#age').val();
+		userResponse['gender'] =  $('#gender').val();
+
+
+		$.post('/update', userResponse, function (response) {
+			if (response['success'] == true) {
+				window.location = window.location.origin + '/finished';
+			} else {
+				console.log('error');
+			}
+		});
+	});

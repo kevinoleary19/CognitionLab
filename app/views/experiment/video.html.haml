@@ -1,0 +1,42 @@
+.video-page
+	.video-container
+		%video{width: '1920', height: '1080', controls: true}
+			%source{src: 'http://d323anfiww5kx7.cloudfront.net/weekend+plans.mp4', type: 'video/mp4'}
+
+	%input{class: 'hidden', autofocus: true}
+	.button{class: 'disabled hidden'}
+		Submit
+
+:javascript
+	$('input').keyup(function () {
+		if (this.value != '') {
+			$('.button').removeClass('disabled');
+		} else if (this.value == '' && !$('.button').hasClass('disabled')) {
+			$('.button').addClass('disabled');
+		}
+	});
+
+	video = $('video')[0];
+
+	video.onended = function () {
+		$('input, .button').removeClass('hidden');
+	}
+
+	var id = #{id}
+
+	$('.button').click(function() {
+		var data = {}
+		var userResponse = $('input').val();
+		var key = 'video_question_' + id;
+		data[key] =  userResponse;
+		$.post('/update', data, function (response) {
+			if (response['success'] == true) {
+				if (id == 4) {
+					window.location = window.location.origin + '/form';
+				} else {
+					id += 1;
+					window.location = window.location.origin + '/video/' + id;
+				}
+			}
+		});
+	});
