@@ -1,0 +1,10 @@
+.social-form-container
+	.question
+		On a scale of 1-10 (ten being the best) indicate how good at socializing you think you are. Socializing can mean understanding people’s emotions, being aware of body language, and remembering facts about people.
+	.scale
+		- (1..10).each do |i|
+			.scale-button{id: 'scale-button' + i.to_s}
+				#{i}
+	.button{class: 'disabled'}
+		Next
+= javascript_include_tag 'social-form'

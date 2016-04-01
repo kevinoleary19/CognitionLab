@@ -6,15 +6,25 @@ Rails.application.routes.draw do
   root 'experiment#show_homepage'
 
   get 'video/:id' => 'experiment#show_video'
-  post 'input' => 'experiment#store_input'
-  get 'form' => 'experiment#show_form'
-  
+  get 'finished' => 'experiment#show_finished'
+
   get 'user_info' => 'users#show'
   get 'create_user' => 'users#create'
   post 'update' => 'users#update'
+  get 'users' => 'users#index'
 
-  get 'finished' => 'experiment#show_finished'
+  get 'video_form_info' => 'video_form#index'
+  get 'video_form' => 'video_form#show'
+  post 'video_form_answers' => 'video_form#create_answer'
 
+  get 'social_form' => 'social#show'
+  get 'social_form_info' => 'social#index'
+  post 'social_form_answers' => 'social#create_answer'
+
+  get 'emotional_form_instructions' => 'emotional#show_instructions'
+  get 'emotional_form' => 'emotional#show'
+  get 'emotional_form_info' => 'emotional#index'
+  post 'emotional_form_answers' => 'emotional#create_answer'
   
 
   # Example of regular route:

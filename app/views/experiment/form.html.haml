@@ -1,55 +1,20 @@
 .non-verbal-form-container
 	.question-container
-		.question{id: 'question-0'}
-			Who was the peacekeeper?
-		.question{id: 'question-1', class: 'hidden'}
-			Who smiled the most?
-		.question{id: 'question-2', class: 'hidden'}
-			Who was the most animated?
-		.question{id: 'question-3', class: 'hidden'}
-			Who maintained the most eye contact?
+		.question
 
-	.people-container
+	.two-part-prompt{class: 'hidden'}
+		.two-part-button{id: 'yes-button'}
+			yes
+		.two-part-button{id: 'no-button'}
+			no
+
+
+	.people-container{class: 'hidden'}
 		%img#person0{class: 'person_container', src: 'http://d323anfiww5kx7.cloudfront.net/0.jpeg'}
 		%img#person1{class: 'person_container', src: 'http://d323anfiww5kx7.cloudfront.net/1.jpeg'}
 		%img#person2{class: 'person_container', src: 'http://d323anfiww5kx7.cloudfront.net/2.jpeg'}
 		%img#person3{class: 'person_container', src: 'http://d323anfiww5kx7.cloudfront.net/3.jpeg'}
 
-	.button{class: 'disabled'}
+	.button{class: 'disabled hidden'}
 		Next
-
-:javascript
-	
-	questionCounter = 0;
-	responseString = '';
-
-	$('img').click(function() {
-		$('.button').removeClass('disabled');
-		$('img').removeClass('img-border');
-		$(this).addClass('img-border');
-	});
-
-	$('.button').click(function() {
-
-		responseId = $('.img-border').attr('id').split('person')[1];
-		responseString += responseId;
-
-		if (questionCounter == 3) {
-			$.post('/update', {nonverbal_answers: responseString}, function (response) {
-				if (response['success'] == true) {
-					window.location = window.location.origin + '/user_info';
-				}
-			});
-		} else {
-			toHide = '#question-' + questionCounter;
-			num = questionCounter + 1;
-			toShow = '#question-' + num;
-
-			$(toHide).addClass('hidden');
-			$(toShow).removeClass('hidden');
-
-			questionCounter += 1;
-			$('img').removeClass('img-border');
-			$('.button').addClass('disabled');
-		}
-	});
+= javascript_include_tag 'video-form'

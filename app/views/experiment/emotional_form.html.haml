@@ -1,0 +1,11 @@
+.emotional-form-container
+	.question
+	.answers
+		- (1..4).each do |i|
+			.answer-container
+				%input{id: 'answer' + i.to_s, class: 'answer', name: 'emotional-answer', type: 'radio'}
+				%label{id: 'label' + i.to_s, for: 'answer' + i.to_s}
+					%span
+	.button{class: 'disabled'}
+		Next
+= javascript_include_tag 'emotional-form'

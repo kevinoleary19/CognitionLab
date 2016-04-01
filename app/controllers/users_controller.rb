@@ -7,10 +7,16 @@ class UsersController < ApplicationController
 		render json: {success: true}
 	end
 
+	def index
+		@user = User.first
+
+		render json: @user
+	end
+
 	def update
 		user = User.find_by id: session[:user_id]
-		user_attributes = params.permit(:name, :age, :gender, :nonverbal_answers, :video_question_1,
-																:video_question_2, :video_question_3, :video_question_4)
+		user_attributes = params.permit(:name, :age, :gender, :video_question_1, :video_question_2,
+																	  :video_question_3, :video_question_4, :social_level, :email)
 
 		user.attributes = user_attributes
 		user.save!

@@ -1,9 +1,5 @@
 class ExperimentController < ApplicationController
 
-	def show_form
-		render 'experiment/form', layout: 'application'
-	end
-
 	def show_homepage
 		render 'experiment/instructions', layout: 'application'
 	end

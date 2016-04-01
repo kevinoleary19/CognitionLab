@@ -5,7 +5,7 @@
 		.input-title
 			Full Name
 		%input{id: 'full-name'}
-	.input-container	
+	.input-container
 		.input-title
 			Age
 		%input{id: 'age'}
@@ -13,6 +13,10 @@
 		.input-title
 			Gender
 		%input{id: 'gender'}
+	.input-container
+		.input-title
+			Email
+		%input{id: 'email'}
 	.button{class: 'disabled'}
 		Next
 :javascript
@@ -26,7 +30,14 @@
 			}
 		}
 
-		if (validInputs == 3) {
+		if ($('#email').val() != '') {
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if ($('#email').val().match(mailformat)) {
+				validInputs += 1;
+			}
+		}
+
+		if (validInputs == 4) {
 			$('.button').removeClass('disabled');
 		} else if (!$('.button').hasClass('disabled')) {
 			$('.button').addClass('disabled');
@@ -39,6 +50,7 @@
 		userResponse['name'] =  $('#full-name').val();
 		userResponse['age'] =  $('#age').val();
 		userResponse['gender'] =  $('#gender').val();
+		userResponse['email'] =  $('#email').val();
 
 
 		$.post('/update', userResponse, function (response) {

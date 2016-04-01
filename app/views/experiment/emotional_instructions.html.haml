@@ -1,0 +1,69 @@
+- answer_array = ['I want to be the change', 'I disclose my intimate thoughts.', 'I enjoy spending time by myself', 'I believe laws should be strictly enforced']
+.emotional-instructions-container
+	%p 
+		In this test your knowledge and intuitions about personality will be tested. An example question is below. 
+	.sample-question-container
+		%p{class: 'sample-question'} I try to follow the rules:
+		.answers
+			- (0..3).each do |i|
+				.answer-container
+					%input{id: 'answer' + i.to_s, class: 'answer', name: 'emotional-answer', type: 'radio'}
+					%label{id: 'label' + i.to_s, for: 'answer' + i.to_s}
+						%span
+						#{answer_array[i]}
+	%p
+		The correct answer is "I believe laws should be strictly enforced". People who agree with "I try to follow the rules" are much more likely than those who disagree to agree with "I believe laws should be strictly enforced". See the table below.
+	.emotional-table
+		.table-row
+			Percent agreement with the example answers broken down by agreement to the example question
+		.table-row
+			.table-half
+			.table-half
+				Response to "I try to follow the rules"
+		.table-row
+			.table-half
+			.table-half
+				.table-half
+					Disagree
+				.table-half
+					Agree
+		.table-row
+			.table-half
+				I want to be in charge
+			.table-half
+				.table-half
+					51%
+				.table-half
+					48%
+		.table-row
+			.table-half
+				I disclose my intimate thoughts
+			.table-half
+				.table-half
+					35%
+				.table-half
+					34%
+		.table-row
+			.table-half
+				I enjoy spending time by myself
+			.table-half
+				.table-half
+					76%
+				.table-half
+					77%
+		.table-row
+			.table-half
+				I believe laws should be strictly enforced
+			.table-half
+				.table-half
+					14%
+				.table-half
+					47%
+	%p
+		Reading the table we see that of those who disagreed with "I try to follow the rules", 51% agreed with "I want to be in charge" while of those who agreed with "I try to follow the rules", 48% agreed with "I want to be in charge". Not a huge difference. Compare this to the responses to "I believe laws should be strictly enforced", where individuals who agreed with "I try to follow the rules" are 33% more likely to agree than those who did not agree with "I try to follow the rules".
+	.button
+		Start
+:javascript
+	$('.button').click(function() {
+		window.location = window.location.origin + '/emotional_form';
+	})
