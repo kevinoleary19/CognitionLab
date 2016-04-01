@@ -33,7 +33,7 @@ class VideoForm
 			error: ->
 				console.log('Create answers failed')
 			success: ->
-				window.location.href = window.location.origin + '/emotional_form'
+				window.location.href = window.location.origin + '/emotional_form_instructions'
 
 	#-----------------------------------------#
 
