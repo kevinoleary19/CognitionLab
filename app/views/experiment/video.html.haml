@@ -37,7 +37,7 @@
 		$.post('/update', data, function (response) {
 			if (response['success'] == true) {
 				if (id == 5) {
-					window.location = window.location.origin + '/video_form';
+					window.location = window.location.origin + '/social_form';
 				} else {
 					id += 1;
 					window.location = window.location.origin + '/video/' + id;

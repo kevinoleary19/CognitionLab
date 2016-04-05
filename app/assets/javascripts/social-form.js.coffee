@@ -16,7 +16,7 @@ class SocialForm
 			error: ->
 				console.log('Create social_level failed')
 			success: ->
-				window.location.href = window.location.origin + '/user_info'
+				window.location.href = window.location.origin + '/video_form'
 
 	#-----------------------------------------#
 

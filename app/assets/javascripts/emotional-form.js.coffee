@@ -30,7 +30,7 @@ class SocialForm
 			error: ->
 				console.log('Create answers failed')
 			success: ->
-				window.location.href = window.location.origin + '/social_form'
+				window.location.href = window.location.origin + '/user_info'
 
 	#-----------------------------------------#
 
