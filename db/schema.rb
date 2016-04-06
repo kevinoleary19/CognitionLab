@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20160329032440) do
     t.string   "video_question_3"
     t.string   "video_question_4"
     t.string   "social_level"
+    t.string   "major"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

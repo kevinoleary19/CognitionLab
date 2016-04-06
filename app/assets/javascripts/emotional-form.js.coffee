@@ -9,6 +9,9 @@ class SocialForm
 		$('input[type=radio]').bind
 			click: @radioClickHandler
 
+		$('.help-button span').bind
+			click: @helpButtonHandler			
+
 	#------------- ajax requests ------------#
 	getForm: =>
 		$.ajax
@@ -38,6 +41,9 @@ class SocialForm
 	buttonHandler: (event) =>
 		$('.button').addClass('disabled')
 		@addAnswer()
+
+	helpButtonHandler: (event) =>
+		$('.help-button .modal').toggleClass('hidden')
 
 	radioClickHandler: (event) =>
 		$('.button').removeClass('disabled')

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@user = User.first
+		@user = User.last
 
 		render json: @user
 	end
@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 	def update
 		user = User.find_by id: session[:user_id]
 		user_attributes = params.permit(:name, :age, :gender, :video_question_1, :video_question_2,
-																	  :video_question_3, :video_question_4, :social_level, :email)
+																	  :video_question_3, :video_question_4, :social_level, :email,
+																	  :major)
 
 		user.attributes = user_attributes
 		user.save!

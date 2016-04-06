@@ -86,7 +86,7 @@ input {
 
 .form-container {
   text-align: center;
-  margin-top: 6em;
+  margin-top: em;
 
   h1 {
     margin: 0 0 2em;
@@ -399,7 +399,7 @@ $instructions-grey: #D4D4D4;
   width: 90%;
   max-width: 30em;
   margin: 6em auto;
-  margin-top: 7em;
+  margin-top: 8em;
   
   .question {
     font-size: 1.6rem;
@@ -419,4 +419,41 @@ $instructions-grey: #D4D4D4;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.help-button {
+  span {
+    color: $limewire;
+    cursor: pointer;
+    top: 3em;
+    left: 2em;
+    text-transform: capitalize;
+    display: inline-block;
+    position: absolute;
+
+    &:hover {
+      border-bottom: 2px solid  $limewire;
+    }  
+  }
+
+  .modal {
+    width: 28em;
+    border: 1px solid #1ecd97;
+    border-radius: 6px;
+    position: absolute;
+    padding: .5em;
+    top: 1em;
+    left: 8em;
+
+    &:before {
+      content: "\A";
+      border-style: solid;
+      border-width: 10px 15px 10px 0;
+      border-color: transparent $limewire transparent transparent;
+      position: absolute;
+      left: -15px;
+      top: 51px;
+    }
+  }
+  
 }

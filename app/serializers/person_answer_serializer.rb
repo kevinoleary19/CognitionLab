@@ -1,3 +1,4 @@
 class PersonAnswerSerializer < ActiveModel::Serializer
-	attributes :id, :person
+	attributes :person
+	has_one :person_question
 end

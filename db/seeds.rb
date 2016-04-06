@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 person_questions = [
 	["Who smiled the most", false],
-	["Who’s body seemed the most tense", false],
+	# ["Who’s body seemed the most tense", false],
 	["Who maintained the most eye contact", false],
 	["Who made the least eye contact", false],
 	["Who used a lot of hand gestures", false],
@@ -17,10 +17,10 @@ person_questions = [
 	["Who was hard to read", false],
 	["Who would you go to for advice", false],
 	["Who’s most likely to go to a climate change rally", false],
-	["Who would probably text you about an upcoming date", false],
+	# ["Who would probably text you about an upcoming date", false],
 	["Who would you buy chunky monkey ice cream for", false],
 	["Would you take anyone to a Beyonce concert", true],
-	["Does anyone want to go on a dialogue", true],
+	# ["Does anyone want to go on a dialogue", true],
 	["Does anyone have a cat", true],
 	["Did anyone seem extremely happy", true],
 	["Was there anyone who's legs were shaking", true],

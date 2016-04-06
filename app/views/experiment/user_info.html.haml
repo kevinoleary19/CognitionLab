@@ -17,12 +17,16 @@
 		.input-title
 			Email
 		%input{id: 'email'}
+	.input-container
+		.input-title
+			Major
+		%input{id: 'major'}
 	.button{class: 'disabled'}
 		Next
 :javascript
 	$('input').keyup(function () {
 		var validInputs = 0;
-		var inputList = ['#full-name', '#age', '#gender'];
+		var inputList = ['#full-name', '#age', '#gender', '#major'];
 		
 		for (i = 0; i < inputList.length; i++) {
 			if ($(inputList[i]).val() != '') {
@@ -37,7 +41,7 @@
 			}
 		}
 
-		if (validInputs == 4) {
+		if (validInputs == 5) {
 			$('.button').removeClass('disabled');
 		} else if (!$('.button').hasClass('disabled')) {
 			$('.button').addClass('disabled');
@@ -51,6 +55,7 @@
 		userResponse['age'] =  $('#age').val();
 		userResponse['gender'] =  $('#gender').val();
 		userResponse['email'] =  $('#email').val();
+		userResponse['major'] =  $('#major').val();
 
 
 		$.post('/update', userResponse, function (response) {

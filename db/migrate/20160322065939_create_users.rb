@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :video_question_3
       t.string :video_question_4
       t.string :social_level
+      t.string :major
 
       t.timestamps null: false
     end

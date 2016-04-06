@@ -84,7 +84,8 @@ class VideoForm
 
 		currentQuestionId = @questions[@questionCount].id
 		if withPerson
-			response = $('.img-border').attr('id').split('person')[1];
+			response = $('.img-border').attr('id').split('person')[1]
+			response = parseInt(response) + 1
 			$('img').removeClass('img-border')
 		else
 			response = ''
@@ -96,6 +97,7 @@ class VideoForm
 		@answers.push(answer)
 
 		if @questionCount == @questions.length - 1
+			debugger;
 			@sendResponses()
 			return
 		else
