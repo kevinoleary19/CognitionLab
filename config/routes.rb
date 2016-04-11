@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'emotional_form' => 'emotional#show'
   get 'emotional_form_info' => 'emotional#index'
   post 'emotional_form_answers' => 'emotional#create_answer'
+
+  get 'test_results' => 'results#index'
   
 
   # Example of regular route:

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@user = User.last
+		@user = User.all
 
 		render json: @user
 	end
