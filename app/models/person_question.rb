@@ -1,3 +1,3 @@
 class PersonQuestion < ActiveRecord::Base
-	belongs_to :video_form
+	has_and_belongs_to_many :person_answers
 end

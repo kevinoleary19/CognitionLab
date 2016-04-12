@@ -54,7 +54,8 @@ class SocialForm
 		question = @questions[@questionCount]
 		$('.question').text(question.question + '?')
 
-		for answer, i in question.multiple_choice_answer
+
+		for answer, i in question.multiple_choice_answers
 			id = i + 1
 			element = '#label' + id
 			$(element).contents().last().remove()
@@ -69,7 +70,7 @@ class SocialForm
 		response = parseInt(response) - 1
 		chosen_button.attr('checked', false)
 		
-		answerId = currentQuestion.multiple_choice_answer[response].id
+		answerId = currentQuestion.multiple_choice_answers[response].id
 
 		answer = {}
 		answer['multiple_choice_answer_id'] = answerId

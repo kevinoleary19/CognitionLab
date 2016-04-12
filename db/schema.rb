@@ -11,78 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329032440) do
+ActiveRecord::Schema.define(version: 20160412073915) do
 
   create_table "emotional_answers", force: :cascade do |t|
-    t.integer  "emotional_form_answer_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  create_table "emotional_form_answers", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "emotional_forms", force: :cascade do |t|
+  create_table "emotional_answers_multiple_choice_answers", id: false, force: :cascade do |t|
+    t.integer "emotional_answer_id"
+    t.integer "multiple_choice_answer_id"
+  end
+
+  create_table "emotional_answers_questions", id: false, force: :cascade do |t|
+    t.integer "emotional_answer_id"
+    t.integer "emotional_question_id"
+  end
+
+  create_table "emotional_questions", force: :cascade do |t|
+    t.string   "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "emotional_questions", force: :cascade do |t|
-    t.integer  "emotional_form_id"
-    t.integer  "emotional_answer_id"
-    t.string   "question"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+  create_table "emotional_questions_multiple_choice_answers", id: false, force: :cascade do |t|
+    t.integer "emotional_question_id"
+    t.integer "multiple_choice_answer_id"
   end
 
   create_table "multiple_choice_answers", force: :cascade do |t|
-    t.integer  "emotional_question_id"
-    t.integer  "emotional_answer_id"
     t.string   "answer"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "person_answers", force: :cascade do |t|
     t.string   "person"
-    t.integer  "video_form_answer_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "person_answers_questions", id: false, force: :cascade do |t|
+    t.integer "person_answer_id"
+    t.integer "person_question_id"
   end
 
   create_table "person_questions", force: :cascade do |t|
     t.string   "question"
     t.boolean  "is_two_part"
-    t.integer  "video_form_id"
-    t.integer  "person_answer_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  create_table "social_form_answers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "social_form_question_answers", force: :cascade do |t|
-    t.integer  "social_form_answer_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  create_table "social_form_questions", force: :cascade do |t|
-    t.string   "question"
-    t.integer  "social_form_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "social_forms", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,17 +78,6 @@ ActiveRecord::Schema.define(version: 20160329032440) do
     t.string   "major"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-  end
-
-  create_table "video_form_answers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "video_forms", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
