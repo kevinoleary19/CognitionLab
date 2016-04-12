@@ -1,6 +1,31 @@
 $limewire: #1ECD97;
 $grey: #E2E2E2;
 
+@mixin display-flex() {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */  
+}
+
+@mixin align-items($position) {
+  -webkit-align-items: $position;
+  -ms-flex-align: $position;
+  align-items: $position;
+}
+
+@mixin justify-content($position) {
+  -webkit-justify-content: $position;
+  -ms-flex-pack: $position;
+  justify-content: $position;
+}
+
+@mixin flex-direction($orientation) {
+  -webkit-flex-direction: $orientation;
+  -ms-flex-direction: $orientation;
+  flex-direction: $orientation;
+}
 
 html {
   height: 100%;
@@ -148,9 +173,9 @@ video {
 
 .people-container {
   margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  @include display-flex();
+  @include justify-content(space-around);
+  @include align-items(center);
   max-width: 45em;
 
   img {
@@ -165,9 +190,9 @@ video {
 }
 
 .two-part-prompt {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  @include display-flex();
+  @include justify-content(space-around);
+  @include align-items(center);
 
   .two-part-button {
     line-height: 5em;
@@ -333,9 +358,9 @@ $instructions-grey: #D4D4D4;
       width: 100%;
       border-bottom: 1px solid $instructions-grey;
       box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include display-flex();
+      @include align-items(center);
+      @include justify-content(center);
 
       &:nth-child(1) {
         border: 1px solid $instructions-grey;
@@ -350,9 +375,9 @@ $instructions-grey: #D4D4D4;
       width: 50%;
       box-sizing: border-box;
       float: left;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include display-flex();
+      @include align-items(center);
+      @include justify-content(center);
 
       &:nth-child(1) {
         border-left: 1px solid $instructions-grey;
@@ -415,10 +440,10 @@ $instructions-grey: #D4D4D4;
 
 .finished-container {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include display-flex();
+  @include justify-content(center);
+  @include align-items(center);
+  @include flex-direction(column);
 }
 
 .help-button {
