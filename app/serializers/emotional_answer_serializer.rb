@@ -1,4 +1,4 @@
 class EmotionalAnswerSerializer < ActiveModel::Serializer
-	has_one :emotional_question
-	has_one :multiple_choice_answer
+	has_many :emotional_questions
+	has_many :multiple_choice_answers
 end

@@ -1,5 +1,4 @@
 class EmotionalQuestion < ActiveRecord::Base
-	belongs_to :emotional_form
-	belongs_to :emotional_answer
-	has_many :multiple_choice_answer
+	has_and_belongs_to_many :emotional_answers
+	has_and_belongs_to_many :multiple_choice_answers
 end

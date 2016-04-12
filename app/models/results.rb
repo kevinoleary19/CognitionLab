@@ -60,14 +60,14 @@ class Results
 		}
 		num_correct = 0
 
-		if !user.video_form_answer
+		if !user.person_answers
 			return nil
 		end
 
-		answers = user.video_form_answer.person_answer
+		answers = user.person_answers.all
 
 		answers.each do |a|
-			question_id = a.person_question.id
+			question_id = a.person_questions.first.id
 			answer_id = a.person
 
 			if answer_key[question_id] == answer_id
@@ -98,15 +98,15 @@ class Results
 		}
 		num_correct = 0
 
-		if !user.emotional_form_answer
+		if !user.emotional_answers
 			return nil
 		end
 
-		answers = user.emotional_form_answer.emotional_answer
+		answers = user.emotional_answers.all
 
 		answers.each do |a|
-			question_id = a.emotional_question.id
-			answer_id = a.multiple_choice_answer.id
+			question_id = a.emotional_questions.first.id
+			answer_id = a.multiple_choice_answers.first.id
 
 			if answer_key[question_id] == answer_id
 				num_correct += 1

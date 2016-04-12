@@ -4,20 +4,18 @@ class VideoFormController < ApplicationController
 	end
 
 	def index
-		@vf = VideoForm.first.person_question.shuffle
-		render json: @vf
+		@questions = PersonQuestion.all.shuffle
+		render json: @questions
 	end
 
 	def create_answer
 		@user = User.find_by id: session[:user_id]
-		@vfa = VideoFormAnswer.create()
-		@user.video_form_answer = @vfa
 
 		params[:answers].each do |k, hash|
-			@pa = @vfa.person_answer.create(person: hash[:answer])
+			@pa = @user.person_answers.create(person: hash[:answer])
 			id = hash[:person_question_id]
 			@pq = PersonQuestion.find_by id: id
-			@pa.person_question = @pq
+			@pa.person_questions.push(@pq)
 		end
 
 		render json: {success: true}

@@ -28,27 +28,6 @@ person_questions = [
 	["Was there anyone who was constantly stretching", true]
 ]
 
-social_questions = [
-	"How often do you go out",
-	"How many times per week do you see your friends",
-	"How often do you meet someone new",
-	"Of the new people you meet, how likely are you to stay in touch with them",
-	"How likely are you to respond to a text right away when you see it",
-	"How often do you attend weekly club meetings",
-	"How often do you invite people over",
-	"How often do you get invited to social events",
-	"How often do you take a chance in meeting new people",
-	"How likely are you to start a conversation with a stranger",
-	"How likely are you wave at someone you know passing by if you see them",
-	"How many close friends do you have",
-	"How many people do you stay in contact with",
-	"How many conversations (emails/texts count) do you initiate with others daily",
-	"How many conversations do you have with others daily",
-	"How many social events do you attend on a weekly basis",
-	"How many people know you well",
-	"Of the people you know, how many do you interact with on an average day"
-]
-
 emotional_questions = [
 	["I believe that people seldom tell you the whole truth", 
 		[
@@ -172,20 +151,13 @@ emotional_questions = [
 	]
 ]
 
-@vf = VideoForm.create()
 person_questions.each do |question, is_two_part|
-	@vf.person_question.create(question: question, is_two_part: is_two_part)
+	PersonQuestion.create(question: question, is_two_part: is_two_part)
 end
 
-@sf = SocialForm.create()
-social_questions.each do |question|
-	@sf.social_form_question.create(question: question)
-end
-
-@ef = EmotionalForm.create()
 emotional_questions.each do |question, answers|
-	@emotional_question = @ef.emotional_question.create(question: question)
+	@emotional_question = EmotionalQuestion.create(question: question)
 	answers.each do |answer|
-		@emotional_question.multiple_choice_answer.create(answer: answer)
+		@emotional_question.multiple_choice_answers.create(answer: answer)
 	end
 end

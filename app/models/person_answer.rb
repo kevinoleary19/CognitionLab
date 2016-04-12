@@ -1,3 +1,4 @@
 class PersonAnswer < ActiveRecord::Base
-	has_one :person_question
+	belongs_to :user
+	has_and_belongs_to_many :person_questions
 end
